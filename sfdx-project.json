@@ -1,0 +1,15 @@
+{
+	"packageDirectories": [
+		{
+			"path": "samples"
+		},
+		{
+			"path": "force-app",
+			"default": true
+		}
+	],
+	"name": "enterprise-async-framework-samples",
+	"namespace": "",
+	"sfdcLoginUrl": "https://login.salesforce.com",
+	"sourceApiVersion": "54.0"
+}
