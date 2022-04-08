@@ -5,7 +5,7 @@
  * @author Nathan Franklin
  * @changelog
  */
-public inherited sharing class aef_EnterpriseCasesDomain extends aef_ApplicationDomain {
+public inherited sharing class aef_EnterpriseCasesDomain extends aef_ApplicationDomain implements IHasClassType {
 
 	private static Map<Id, Boolean> queriedAccountIds = new Map<Id, Boolean>();
 
@@ -21,6 +21,13 @@ public inherited sharing class aef_EnterpriseCasesDomain extends aef_Application
 		// used to default case priority when an account is reclassified as enterprise
 		registerModule(aef_EnterpriseCasesModule.class);
 
+	}
+
+	/**
+	 * Because Apex doesn't have a decent reflection implementation, we need to return the concrete class type
+	 */
+	public Type getClassType() {
+		return aef_EnterpriseCasesDomain.class;
 	}
 
 	/**
@@ -58,14 +65,5 @@ public inherited sharing class aef_EnterpriseCasesDomain extends aef_Application
 		}
 
 		return output;
-	}
-
-	/**
-	 * Trigger instantiation context
-	 */
-	public virtual class Constructor implements aef_ApplicationDomain.IConstructable {
-		public aef_EnterpriseCasesDomain construct(List<SObject> sObjectList) {
-			return aef_EnterpriseCasesDomain.newInstance(sObjectList);
-		}
 	}
 }

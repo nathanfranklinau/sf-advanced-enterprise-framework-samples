@@ -5,7 +5,7 @@
  * @author Nathan Franklin
  * @changelog
  */
-public inherited sharing class aef_GovernmentAccountDomain extends aef_ApplicationDomain {
+public inherited sharing class aef_GovernmentAccountDomain extends aef_ApplicationDomain implements IHasClassType {
 
 	private static final Set<String> GOVERNMENT_INDUSTRIES = new Set<String>{'Government'};
 
@@ -21,11 +21,16 @@ public inherited sharing class aef_GovernmentAccountDomain extends aef_Applicati
 	}
 
 	/**
+	 * Because Apex doesn't have a decent reflection implementation, we need to return the concrete class type
+	 */
+	public Type getClassType() {
+		return aef_GovernmentAccountDomain.class;
+	}
+
+	/**
 	 * Prefilter the records passed in to ensure this domain class only processes applicable records.
 	 */
 	public override List<SObject> filter(List<SObject> records) {
-		System.debug('filter: ' + className);
-
 		List<SObject> output = new List<SObject>();
 		for(Account record : (List<Account>)records) {
 			if(GOVERNMENT_INDUSTRIES.contains(record.Industry)) {
@@ -33,14 +38,5 @@ public inherited sharing class aef_GovernmentAccountDomain extends aef_Applicati
 			}
 		}
 		return output;
-	}
-
-	/**
-	 * Trigger instantiation context
-	 */
-	public virtual class Constructor implements aef_ApplicationDomain.IConstructable {
-		public aef_ApplicationDomain construct(List<SObject> sObjectList) {
-			return aef_GovernmentAccountDomain.newInstance(sObjectList);
-		}
 	}
 }

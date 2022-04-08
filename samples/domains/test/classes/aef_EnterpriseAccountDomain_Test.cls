@@ -17,8 +17,7 @@ private class aef_EnterpriseAccountDomain_Test {
 		List<Account> accounts = aef_ApplicationTestDataFactory.getAccounts(2, true);
 		accounts[0].AnnualRevenue = 5000000;
 
-		aef_ApplicationDomain.IConstructable constructableDomain = new aef_EnterpriseAccountDomain.Constructor();
-		aef_EnterpriseAccountDomain domain = (aef_EnterpriseAccountDomain)constructableDomain.construct(accounts);
+		aef_EnterpriseAccountDomain domain = (aef_EnterpriseAccountDomain)aef_ApplicationDomain.newInstance(aef_EnterpriseAccountDomain.class, accounts);
 
 		System.assertEquals(1, domain.records.size(), 'Records should have been filtered in call to newInstance');
 		System.assertEquals(accounts[0].Id, domain.records[0].Id, 'Expected enterprise record');

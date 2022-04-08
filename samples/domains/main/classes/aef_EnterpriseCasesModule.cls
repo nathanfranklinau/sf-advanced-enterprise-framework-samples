@@ -27,15 +27,6 @@ public inherited sharing class aef_EnterpriseCasesModule extends aef_Application
 
 	}
 
-	/**
-	 * Module instantiation context. This allows us to dynamically instantiate this module within ApplicationModule
-	 */
-	public class Constructor implements aef_ApplicationDomain.IConstructableModule {
-		public aef_ApplicationDomain.Module construct() {
-			return (aef_ApplicationDomain.Module)aef_EnterpriseCasesModule.newInstance();
-		}
-	}
-
 	public static aef_EnterpriseCasesModule newInstance() {
 		return (aef_EnterpriseCasesModule)aef_Application.Utilities.newInstance(aef_EnterpriseCasesModule.class);
 	}

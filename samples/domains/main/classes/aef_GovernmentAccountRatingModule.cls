@@ -116,15 +116,6 @@ public inherited sharing class aef_GovernmentAccountRatingModule extends aef_App
 		public Set<Id> accountIds;
 	}
 
-	/**
-	 * Module instantiation context. This allows us to dynamically instantiate this module within ApplicationModule
-	 */
-	public class Constructor implements aef_ApplicationDomain.IConstructableModule {
-		public aef_ApplicationDomain.Module construct() {
-			return (aef_ApplicationDomain.Module)aef_GovernmentAccountRatingModule.newInstance();
-		}
-	}
-
 	public static aef_GovernmentAccountRatingModule newInstance() {
 		return (aef_GovernmentAccountRatingModule)aef_Application.Utilities.newInstance(aef_GovernmentAccountRatingModule.class);
 	}

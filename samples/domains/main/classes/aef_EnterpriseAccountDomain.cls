@@ -5,7 +5,7 @@
  * @author Nathan Franklin
  * @changelog
  */
-public inherited sharing class aef_EnterpriseAccountDomain extends aef_ApplicationDomain {
+public inherited sharing class aef_EnterpriseAccountDomain extends aef_ApplicationDomain implements IHasClassType {
 
 	public static aef_EnterpriseAccountDomain newInstance(List<SObject> sObjectList) {
 		return (aef_EnterpriseAccountDomain)aef_ApplicationDomain.newInstance(aef_EnterpriseAccountDomain.class, sObjectList);
@@ -22,19 +22,16 @@ public inherited sharing class aef_EnterpriseAccountDomain extends aef_Applicati
 	}
 
 	/**
-	 * Prefilter the records passed in to ensure this domain class only processes applicable records.
+	 * Because Apex doesn't have a decent reflection implementation, we need to return the concrete class type
 	 */
-	public override List<SObject> filter(List<SObject> records) {
-		System.debug('filter: ' + className);
-		return aef_EnterpriseService.getInstance().filterEnterpriseAccounts(records);
+	public Type getClassType() {
+		return aef_EnterpriseAccountDomain.class;
 	}
 
 	/**
-	 * Trigger instantiation context
+	 * Prefilter the records passed in to ensure this domain class only processes applicable records.
 	 */
-	public virtual class Constructor implements aef_ApplicationDomain.IConstructable {
-		public aef_EnterpriseAccountDomain construct(List<SObject> sObjectList) {
-			return aef_EnterpriseAccountDomain.newInstance(sObjectList);
-		}
+	public override List<SObject> filter(List<SObject> records) {
+		return aef_EnterpriseService.getInstance().filterEnterpriseAccounts(records);
 	}
 }

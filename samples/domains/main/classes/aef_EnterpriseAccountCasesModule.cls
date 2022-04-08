@@ -92,15 +92,6 @@ public inherited sharing class aef_EnterpriseAccountCasesModule extends aef_Appl
 		public Set<Id> accountIds;
 	}
 
-	/**
-	 * Module instantiation context. This allows us to dynamically instantiate this module within ApplicationModule
-	 */
-	public class Constructor implements aef_ApplicationDomain.IConstructableModule {
-		public aef_ApplicationDomain.Module construct() {
-			return (aef_ApplicationDomain.Module)aef_EnterpriseAccountCasesModule.newInstance();
-		}
-	}
-
 	public static aef_EnterpriseAccountCasesModule newInstance() {
 		return (aef_EnterpriseAccountCasesModule)aef_Application.Utilities.newInstance(aef_EnterpriseAccountCasesModule.class);
 	}
