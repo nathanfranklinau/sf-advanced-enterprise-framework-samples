@@ -5,7 +5,7 @@
  * @author Nathan Franklin
  * @changelog
  */
-public inherited sharing class aef_EnterpriseAccountDomain extends aef_ApplicationDomain implements IHasClassType {
+public inherited sharing class aef_EnterpriseAccountDomain extends aef_ApplicationDomain {
 
 	public static aef_EnterpriseAccountDomain newInstance(List<SObject> sObjectList) {
 		return (aef_EnterpriseAccountDomain)aef_ApplicationDomain.newInstance(aef_EnterpriseAccountDomain.class, sObjectList);
@@ -19,13 +19,6 @@ public inherited sharing class aef_EnterpriseAccountDomain extends aef_Applicati
 		// used to retro fit case priority when an account is reclassified as enterprise
 		registerModule(aef_EnterpriseAccountCasesModule.class);
 
-	}
-
-	/**
-	 * Because Apex doesn't have a decent reflection implementation, we need to return the concrete class type
-	 */
-	public Type getClassType() {
-		return aef_EnterpriseAccountDomain.class;
 	}
 
 	/**

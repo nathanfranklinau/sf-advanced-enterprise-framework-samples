@@ -5,7 +5,7 @@
  * @author Nathan Franklin
  * @changelog
  */
-public inherited sharing class aef_EnterpriseCasesDomain extends aef_ApplicationDomain implements IHasClassType {
+public inherited sharing class aef_EnterpriseCasesDomain extends aef_ApplicationDomain {
 
 	private static Map<Id, Boolean> queriedAccountIds = new Map<Id, Boolean>();
 
@@ -24,17 +24,10 @@ public inherited sharing class aef_EnterpriseCasesDomain extends aef_Application
 	}
 
 	/**
-	 * Because Apex doesn't have a decent reflection implementation, we need to return the concrete class type
-	 */
-	public Type getClassType() {
-		return aef_EnterpriseCasesDomain.class;
-	}
-
-	/**
 	 * Prefilter the records passed in to ensure this domain class only processes applicable records.
 	 *
 	 * NOTE: This is an example to show how you possibly could filter for a particular domain
-	 *       This could be written better in real world scenario, this simply illustrates how filter could work as one possibility
+	 *	   This could be written better in real world scenario, this simply illustrates how filter could work as one possibility
 	 */
 	public override List<SObject> filter(List<SObject> records) {
 

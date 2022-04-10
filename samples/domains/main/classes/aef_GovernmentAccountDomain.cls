@@ -5,7 +5,7 @@
  * @author Nathan Franklin
  * @changelog
  */
-public inherited sharing class aef_GovernmentAccountDomain extends aef_ApplicationDomain implements IHasClassType {
+public inherited sharing class aef_GovernmentAccountDomain extends aef_ApplicationDomain {
 
 	private static final Set<String> GOVERNMENT_INDUSTRIES = new Set<String>{'Government'};
 
@@ -18,13 +18,6 @@ public inherited sharing class aef_GovernmentAccountDomain extends aef_Applicati
 	 */
 	public override void registerModules() {
 		registerModule(aef_GovernmentAccountRatingModule.class);
-	}
-
-	/**
-	 * Because Apex doesn't have a decent reflection implementation, we need to return the concrete class type
-	 */
-	public Type getClassType() {
-		return aef_GovernmentAccountDomain.class;
 	}
 
 	/**

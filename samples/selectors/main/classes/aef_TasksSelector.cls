@@ -51,7 +51,7 @@ public virtual inherited sharing class aef_TasksSelector extends aef_Application
 		aef_QueryBuilder.ConditionsManager conditions = builder.addConditions();
 
 		Set<Id> whatIds = (Set<Id>)(searchParams.get('whatIds') == null ? new Set<Id>() : (searchParams.get('whatIds') instanceof Set<Id> ? searchParams.get('whatIds') : new Set<Id>{(Id)searchParams.get('whatIds')}));
-        Set<Id> ownerIds = (Set<Id>)(searchParams.get('ownerIds') == null ? new Set<Id>() : (searchParams.get('ownerIds') instanceof Set<Id> ? searchParams.get('ownerIds') : new Set<Id>{(Id)searchParams.get('ownerIds')}));
+		Set<Id> ownerIds = (Set<Id>)(searchParams.get('ownerIds') == null ? new Set<Id>() : (searchParams.get('ownerIds') instanceof Set<Id> ? searchParams.get('ownerIds') : new Set<Id>{(Id)searchParams.get('ownerIds')}));
 		Set<String> subjects = (Set<String>)(searchParams.get('subjects') == null ? new Set<String>() : (searchParams.get('subjects') instanceof Set<String> ? searchParams.get('subjects') : new Set<String>{String.valueOf(searchParams.get('subjects'))}));
 		Date fromActivityDate = searchParams.get('fromActivityDate') == null ? null : Date.valueOf(String.valueOf(searchParams.get('fromActivityDate')));
 		Date toActivityDate = searchParams.get('toActivityDate') == null ? null : Date.valueOf(String.valueOf(searchParams.get('toActivityDate')));
@@ -78,10 +78,10 @@ public virtual inherited sharing class aef_TasksSelector extends aef_Application
 			conditions.add(new aef_QueryBuilder.SimpleCondition('Subject in :subjects'));
 			conditionCount++;
 		}
-        if(searchParams.containsKey('ownerIds')) {
-            conditions.add(new aef_QueryBuilder.SimpleCondition('OwnerId in :ownerIds'));
-            conditionCount++;
-        }
+		if(searchParams.containsKey('ownerIds')) {
+			conditions.add(new aef_QueryBuilder.SimpleCondition('OwnerId in :ownerIds'));
+			conditionCount++;
+		}
 		
 		// build our condition string which would end up being something liek the following:
 		// 1 AND 2 AND 3

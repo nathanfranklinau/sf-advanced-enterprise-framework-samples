@@ -6,10 +6,10 @@
  * @changelog
 */
 public virtual inherited sharing class aef_AccountsSelector extends aef_ApplicationSelector {
-    public enum Options {
-        WITH_OWNER, WITH_CONTACTS, WITH_TASKS
-	    //, WITH_CASES, WITH_OPPORTUNITIES etc... can be implemented
-    }
+	public enum Options {
+		WITH_OWNER, WITH_CONTACTS, WITH_TASKS
+		//, WITH_CASES, WITH_OPPORTUNITIES etc... can be implemented
+	}
 
 	public static aef_AccountsSelector newInstance() {
 		return (aef_AccountsSelector)aef_Application.Selectors.newInstance(aef_AccountsSelector.class);
@@ -39,15 +39,15 @@ public virtual inherited sharing class aef_AccountsSelector extends aef_Applicat
 		return Account.getSObjectType();
 	}
 
-    public virtual override Set<SObjectField> getSObjectFieldList() {
-        return new Set<SObjectField> {
+	public virtual override Set<SObjectField> getSObjectFieldList() {
+		return new Set<SObjectField> {
 			Account.Id, Account.Name, Account.Type, Account.OwnerId,
 			Account.BillingStreet, Account.BillingCity, Account.BillingState,
 			Account.BillingPostalCode, Account.Phone, Account.BillingCountry,
 			Account.ShippingStreet, Account.ShippingCity, Account.ShippingState,
 			Account.ShippingPostalCode, Account.ShippingCountry, Account.AccountNumber
-        };
-    }
+		};
+	}
 
 	/**
 	 * @description Run a simple query to get records based on Id's
@@ -65,8 +65,8 @@ public virtual inherited sharing class aef_AccountsSelector extends aef_Applicat
 	}
 
 	/**
-     * @description Run a simple query to get records based on Account Numbers
-     */
+	 * @description Run a simple query to get records based on Account Numbers
+	 */
 	public List<Account> selectByAccountNumber(Set<String> accountNumbers) {
 		return selectByAccountNumber(accountNumbers, new Set<Object>());
 	}
